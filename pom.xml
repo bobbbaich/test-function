@@ -25,11 +25,11 @@
 
 		<!-- AZURE FUNCTION CONFIG -->
 		<azure.functions.maven.plugin.version>1.28.0</azure.functions.maven.plugin.version>
-		<functionAppName>spring-cloud-function-samples</functionAppName>
-		<functionAppRegion>westus</functionAppRegion>
-		<functionResourceGroup>java-functions-group</functionResourceGroup>
-		<functionAppServicePlanName>java-functions-app-service-plan</functionAppServicePlanName>
-		<functionPricingTier>EP1</functionPricingTier>
+		<functionAppName>bohdan-demo</functionAppName>
+		<functionAppRegion>germanywestcentral</functionAppRegion>
+		<functionResourceGroup>demo-serverless-rg</functionResourceGroup>
+		<functionAppServicePlanName>ASP-demoserverlessrg-8a3c</functionAppServicePlanName>
+		<functionPricingTier>Y1</functionPricingTier>
 	</properties>
 	<dependencies>
 
