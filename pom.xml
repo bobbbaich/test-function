@@ -26,12 +26,12 @@
 		<start-class>com.example.azure.web.AzureWebDemoApplication</start-class>
 
 		<!-- 3. Azure Function maven plugin configurations -->
-		<azure.functions.maven.plugin.version>1.22.0</azure.functions.maven.plugin.version>
-		<functionAppName>scf-azure-web-sample</functionAppName>
-		<functionAppRegion>westus</functionAppRegion>
-		<functionResourceGroup>java-functions-group</functionResourceGroup>
-		<functionAppServicePlanName>java-functions-app-service-plan</functionAppServicePlanName>
-		<functionPricingTier>EP1</functionPricingTier>
+		<azure.functions.maven.plugin.version>1.36.0</azure.functions.maven.plugin.version>
+		<functionAppName>bohdan-demo</functionAppName>
+		<functionAppRegion>germanywestcentral</functionAppRegion>
+		<functionResourceGroup>demo-serverless-rg</functionResourceGroup>
+		<functionAppServicePlanName>ASP-demoserverlessrg-8a3c</functionAppServicePlanName>
+		<functionPricingTier>Y1</functionPricingTier>
 
 	</properties>
 
