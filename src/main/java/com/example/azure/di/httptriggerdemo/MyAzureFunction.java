@@ -17,8 +17,9 @@
 package com.example.azure.di.httptriggerdemo;
 
 import com.microsoft.azure.functions.ExecutionContext;
-import com.microsoft.azure.functions.HttpMethod;
 import com.microsoft.azure.functions.HttpRequestMessage;
+import com.microsoft.azure.functions.HttpResponseMessage;
+import com.microsoft.azure.functions.HttpStatus;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
@@ -28,6 +29,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.function.Function;
+
+import static com.microsoft.azure.functions.HttpMethod.POST;
 
 @Component
 public class MyAzureFunction {
@@ -53,21 +56,25 @@ public class MyAzureFunction {
     @FunctionName("bean")
     public String plainBeans(
             @HttpTrigger(name = "req", methods = {
-                    HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+                    POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
 
         return echo.andThen(uppercase).apply(request.getBody().get());
     }
 
     @FunctionName("scf")
-    public String springCloudFunction(
-            @HttpTrigger(name = "req", methods = {
-                    HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+    public HttpResponseMessage springCloudFunction(
+            @HttpTrigger(name = "req", methods = {POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
             ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+
+        context.getLogger().info("Request body: " + request.getBody().get());
 
         // Use SCF composition. Composed functions are not just spring beans but SCF such.
         Function composed = this.functionCatalog.lookup("echo|reverse|uppercase");
 
-        return (String) composed.apply(request.getBody().get());
+        return request.createResponseBuilder(HttpStatus.OK)
+                .body(composed.apply(request.getBody().get()))
+                .build();
     }
 }
