@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 public class AzureWebDemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AzureWebDemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AzureWebDemoApplication.class, args);
+    }
 
 }
