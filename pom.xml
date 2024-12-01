@@ -27,7 +27,7 @@
         <start-class>com.example.azure.web.AzureWebDemoApplication</start-class>
 
         <!-- 3. Azure Function maven plugin configurations -->
-        <azure.functions.maven.plugin.version>1.22.0</azure.functions.maven.plugin.version>
+        <azure.functions.maven.plugin.version>1.36.0</azure.functions.maven.plugin.version>
         <functionAppName>bohdan-demo</functionAppName>
         <functionAppRegion>germanywestcentral</functionAppRegion>
         <functionResourceGroup>demo-serverless-rg</functionResourceGroup>
